@@ -1,40 +1,32 @@
 require 'selenium-webdriver'
 require 'capybara'
 require 'capybara/cucumber'
-require 'capybara/poltergeist'
+#require 'capybara/poltergeist'
 require 'site_prism'
-require 'mongo'
-require 'logger'
-require 'faker'
 
-# Firefox => Geckodriver.exe
-# Chrome => Chromedriver.exe
-# IE => InternetExplorerDriver.exe
-# Phantomjs => phantomjs.exe
 
-@browser = ENV['BROWSER']
 
-if @browser.eql?('phantomjs')
+$env = ENV['BROWSER']
+$headless = ENV['HEADLESS']
+
+if $headless
     Capybara.register_driver :selenium do |app|
-        Capybara::Poltergeist::Driver.new(app, js_erros: false)
-    end
+    Capybara::Poltergeist::Driver.new(app, js_errors: false)
 end
-
+end
 Capybara.configure do |c|
 
-    if @browser.eql?('firefox')
-        c.default_driver = :selenium
-    elsif @browser.eql?('chrome')
-        c.default_driver = :selenium_chrome
-    elsif @browser.eql?('chrome_headless')
-        c.default_driver = :selenium_chrome_headless
-    else
-        c.default_driver = :selenium
-    end
+if $env == 'firefox'
+    c.default_driver = :selenium
+elsif $env == 'chrome'
+    c.default_driver = :selenium_chrome
+elsif $env == 'chrome_headless'
+    c.default_driver = :selenium_chrome_headless
 
-    c.app_host = 'https://mark7.herokuapp.com'
 end
 
-Capybara.default_max_wait_time = 15
+Capybara.default_max_wait_time = 20
+    
+end
 
-Mongo::Logger.logger.level = Logger::FATAL
+
