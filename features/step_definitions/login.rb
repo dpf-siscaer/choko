@@ -37,5 +37,5 @@ Dado("que eu estou na pagina principal") do
   end
   
   Entao("uma mensagem de erro de usuario incorreto e apresentada") do
-    expect(page).to have_content "aa"
+    expect(page).to have_content "Usuário ou senha incorreto."
   end
