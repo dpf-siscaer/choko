@@ -4,6 +4,7 @@ After do |scenario|
   shot = "logs/shots/#{file_name}.png"
   page.save_screenshot(shot)
   embed(shot, 'image/png', 'Clique aqui para ver o print do teste')
+  
 end
 
 
