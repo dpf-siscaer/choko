@@ -1,10 +1,6 @@
 require 'selenium-webdriver'
 require 'capybara'
 require 'capybara/cucumber'
-#require 'capybara/poltergeist'
-#require 'site_prism'
-
-
 
 $env = ENV['BROWSER']
 $headless = ENV['HEADLESS']
