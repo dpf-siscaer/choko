@@ -2,7 +2,7 @@ require 'selenium-webdriver'
 require 'capybara'
 require 'capybara/cucumber'
 #require 'capybara/poltergeist'
-require 'site_prism'
+#require 'site_prism'
 
 
 
